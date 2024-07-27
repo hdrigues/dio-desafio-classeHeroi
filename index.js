@@ -1,53 +1,75 @@
-// ## Objetivo:
+// Crie uma classe generica que represente um herói de uma aventura e que possua as seguintes propriedades:
 
-// Crie uma função que recebe como parâmetro a quantidade de vitórias e derrotas de um jogador,
-// depois disso retorne o resultado para uma variável, o saldo de Rankeadas deve ser feito através do calculo (vitórias - derrotas)
+// - nome
+// - idade
+// - tipo (ex: guerreiro, mago, monge, ninja )
 
-// Se vitórias for menor do que 10 = Ferro
-// Se vitórias for entre 11 e 20 = Bronze
-// Se vitórias for entre 21 e 50 = Prata
-// Se vitórias for entre 51 e 80 = Ouro
-// Se vitórias for entre 81 e 90 = Diamante
-// Se vitórias for entre 91 e 100= Lendário
-// Se vitórias for maior ou igual a 101 = Imortal
+// além disso, deve ter um método chamado atacar que deve atender os seguientes requisitos:
+
+// - exibir a mensagem: "o {tipo} atacou usando {ataque}")
+// - aonde o {tipo} deve ser concatenando o tipo que está na propriedade da classe
+// - e no {ataque} deve seguir uma descrição diferente conforme o tipo, seguindo a tabela abaixo:
+
+// se mago -> no ataque exibir (usou magia)
+// se guerreiro -> no ataque exibir (usou espada)
+// se monge -> no ataque exibir (usou artes marciais)
+// se ninja -> no ataque exibir (usou shuriken)
 
 // ## Saída
 
 // Ao final deve se exibir uma mensagem:
-// "O Herói tem de saldo de **{saldoVitorias}** está no nível de **{nivel}**"
-//===========================================
 
-//Declarações
-let soma = 0
-let ranking = " "
-let vitoria = 11 //alterar para testar
-let derrota = 1 //alterar para testar
+// - "o {tipo} atacou usando {ataque}"
+//   ex: mago atacou usando magia
+//   guerreiro atacou usando espada
 
-soma = comparativo(vitoria, derrota) //usando função soma
-ranking = classificador(soma) //usando função classificador
+        class heroi {
+            constructor(nome, idade, tipo){
+                this.nome = nome
+                this.idade = idade
+                this.tipo = tipo
 
-//Console que printa a diferença entre vitoria e derrota juntamente com o ranking que o heroi esta
-console.log("O Herói tem de saldo de " + soma + " e está no nível de " + ranking)
+                // if (this.tipo === "guerreiro"){
+                //     this.ataque = "espada"
+                // }else if (this.tipo === "mago"){
+                //     this.ataque = "magia"
+                // }else if (this.tipo === "monge"){
+                //     this.ataque = "artes marciais"
+                // } else if (this.tipo === "ninja"){
+                //     this.ataque = "shuriken"
+                // }  
 
-//função que soma vitoria e derrota e retorna o resutado
-function comparativo(numA, numB){
-    return numA-numB
-}
-//função que recebera o valor da diferença das partidas e classicara o ranking e retorna a string com o ranking
-function classificador(ponto){
-    if(ponto<=10){
-        return "ferro"
-    }else if((ponto>10) && (ponto<=20)){
-        return "bronze"
-    }else if((ponto>20) && (ponto<=50)){
-        return "prata"
-    }else if((ponto>50) && (ponto<=80)){
-        return "ouro"
-    }else if((ponto>80) && (ponto<=90)){
-        return "diamante"
-    }else if((ponto920) && (ponto<=100)){
-        return "Lendario"
-    }else{
-        return "Imortal"
-    }
-}
+                switch(this.tipo){
+                    case "guerreiro":
+                        this.ataque = "espada"
+                        break
+                    case "mago":
+                        this.ataque = "magia"
+                        break
+                    case "monge":
+                        this.ataque = "artes marciais"
+                        break
+                    case "ninja":
+                        this.ataque = "shuriken"
+                        break
+                    
+                    
+                }
+            }
+
+            
+
+            atacar(){
+                console.log("O " + this.tipo + " atacou usando " + this.ataque)
+            }
+        }
+
+        let playerUm = new heroi("Pedro", 25, "guerreiro")
+        let playerDois = new heroi("Brenda", 24, "mago")
+        let playerTres = new heroi("Henrique",29, "monge")
+        let playerQuatro = new heroi("Daiany",32, "ninja")
+
+        playerUm.atacar()
+        playerDois.atacar()
+        playerTres.atacar()
+        playerQuatro.atacar()
